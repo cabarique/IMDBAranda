@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA2E6A1E1A7D20E5005C9701 /* moviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E6A1D1A7D20E5005C9701 /* moviesTableViewController.swift */; };
+		DA2E6A201A7D210F005C9701 /* movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E6A1F1A7D210F005C9701 /* movie.swift */; };
+		DA2E6A241A7F3547005C9701 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E6A231A7F3547005C9701 /* DetailViewController.swift */; };
 		DAC16F2C1A7B405C00993D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC16F2B1A7B405C00993D4C /* AppDelegate.swift */; };
-		DAC16F2E1A7B405C00993D4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC16F2D1A7B405C00993D4C /* ViewController.swift */; };
 		DAC16F311A7B405C00993D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC16F2F1A7B405C00993D4C /* Main.storyboard */; };
 		DAC16F331A7B405C00993D4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC16F321A7B405C00993D4C /* Images.xcassets */; };
 		DAC16F361A7B405C00993D4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC16F341A7B405C00993D4C /* LaunchScreen.xib */; };
@@ -26,10 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA2E6A1D1A7D20E5005C9701 /* moviesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moviesTableViewController.swift; sourceTree = "<group>"; };
+		DA2E6A1F1A7D210F005C9701 /* movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = movie.swift; sourceTree = "<group>"; };
+		DA2E6A231A7F3547005C9701 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DAC16F261A7B405B00993D4C /* IMDBAranda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMDBAranda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC16F2A1A7B405C00993D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAC16F2B1A7B405C00993D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DAC16F2D1A7B405C00993D4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DAC16F301A7B405C00993D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAC16F321A7B405C00993D4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DAC16F351A7B405C00993D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -78,11 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				DAC16F2B1A7B405C00993D4C /* AppDelegate.swift */,
-				DAC16F2D1A7B405C00993D4C /* ViewController.swift */,
 				DAC16F2F1A7B405C00993D4C /* Main.storyboard */,
 				DAC16F321A7B405C00993D4C /* Images.xcassets */,
 				DAC16F341A7B405C00993D4C /* LaunchScreen.xib */,
 				DAC16F291A7B405C00993D4C /* Supporting Files */,
+				DA2E6A1D1A7D20E5005C9701 /* moviesTableViewController.swift */,
+				DA2E6A1F1A7D210F005C9701 /* movie.swift */,
+				DA2E6A231A7F3547005C9701 /* DetailViewController.swift */,
 			);
 			path = IMDBAranda;
 			sourceTree = "<group>";
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAC16F2E1A7B405C00993D4C /* ViewController.swift in Sources */,
+				DA2E6A1E1A7D20E5005C9701 /* moviesTableViewController.swift in Sources */,
+				DA2E6A201A7D210F005C9701 /* movie.swift in Sources */,
 				DAC16F2C1A7B405C00993D4C /* AppDelegate.swift in Sources */,
+				DA2E6A241A7F3547005C9701 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +413,7 @@
 				DAC16F471A7B405C00993D4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DAC16F481A7B405C00993D4C /* Build configuration list for PBXNativeTarget "IMDBArandaTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +422,7 @@
 				DAC16F4A1A7B405C00993D4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
