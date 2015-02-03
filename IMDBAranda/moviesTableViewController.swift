@@ -40,12 +40,13 @@ class moviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
                     var success = parseJSON["page"] as? Int
                     let results = parseJSON["results"] as NSArray
                     for item in results{
+                        let itemID : Int = item.valueForKey("id") as Int
                         let name : String = item.valueForKey("name") as NSString
                         var poster_path = "nALNtBMQVf27H4HiSZnKNfFVvXX.jpg"
                         if (item.valueForKey("poster_path") as? String != nil){
                             poster_path = item.valueForKey("poster_path") as String
                         }
-                        let tvTemp = Movie(type: "serie", name: name, poster_path: poster_path)
+                        let tvTemp = Movie(id: itemID, type: "serie", name: name, poster_path: poster_path)
                         self.movies.append(tvTemp)
                     }
                     dispatch_semaphore_signal(done);
@@ -140,12 +141,13 @@ class moviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
                         var page = parseJSON["page"] as? Int
                         let results = parseJSON["results"] as NSArray
                         for item in results{
+                            let itemID : Int = item.valueForKey("id") as Int
                             let name : String = item.valueForKey("name") as NSString
                             var poster_path = "nALNtBMQVf27H4HiSZnKNfFVvXX.jpg"
                             if (item.valueForKey("poster_path") as? String != nil){
                                 poster_path = item.valueForKey("poster_path") as String
                             }
-                            let tvTemp = Movie(type: "serie", name: name, poster_path: poster_path)
+                            let tvTemp = Movie(id: itemID, type: "serie", name: name, poster_path: poster_path)
                             self.searchSeries.append(tvTemp)
                             
                         }
@@ -177,15 +179,19 @@ class moviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "itemDetail" {
-            let itemDetailViewController = segue.destinationViewController as UIViewController
+            let itemDetailViewController = segue.destinationViewController as DetailViewController
             if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
                 let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
                 let destinationTitle = self.searchSeries[indexPath.row].name
                 itemDetailViewController.title = destinationTitle
+                let mov = self.searchSeries[indexPath.row] as Movie
+                itemDetailViewController.movie = mov
             } else {
                 let indexPath = self.tableView.indexPathForSelectedRow()!
                 let destinationTitle = self.movies[indexPath.row].name
                 itemDetailViewController.title = destinationTitle
+                let mov = self.movies[indexPath.row] as Movie
+                itemDetailViewController.movie = mov
             }
         }
     }

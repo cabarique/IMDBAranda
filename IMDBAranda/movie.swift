@@ -9,6 +9,7 @@
 import Foundation
 
 struct Movie {
+    let id: Int
     let type: String
     let name : String
     let poster_path: String
