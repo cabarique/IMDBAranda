@@ -62,6 +62,7 @@ class moviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
         
         task.resume()
         dispatch_semaphore_wait(done, DISPATCH_TIME_FOREVER);
+        println("hello")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -180,19 +181,42 @@ class moviesTableViewController: UITableViewController, UISearchBarDelegate, UIS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "itemDetail" {
             let itemDetailViewController = segue.destinationViewController as DetailViewController
+            var mov : Movie
             if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
                 let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
                 let destinationTitle = self.searchSeries[indexPath.row].name
                 itemDetailViewController.title = destinationTitle
-                let mov = self.searchSeries[indexPath.row] as Movie
+                mov = self.searchSeries[indexPath.row] as Movie
                 itemDetailViewController.movie = mov
             } else {
                 let indexPath = self.tableView.indexPathForSelectedRow()!
                 let destinationTitle = self.movies[indexPath.row].name
                 itemDetailViewController.title = destinationTitle
-                let mov = self.movies[indexPath.row] as Movie
+                mov = self.movies[indexPath.row] as Movie
                 itemDetailViewController.movie = mov
             }
+            
+            let url = NSURL(string: "https://api.themoviedb.org/3/tv/\(mov.id)?api_key=\(api_key)")
+            var done = dispatch_semaphore_create(0);
+            let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+                var err: NSError?
+                var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
+
+                if(err != nil) {
+                    println(err!.localizedDescription)
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: '\(jsonStr)'")
+                }
+                else {
+                    // The JSONObjectWithData constructor didn't return an error. But, we should still
+                    // check and make sure that json has a value using optional binding.
+                    itemDetailViewController.tvShow = json
+                    dispatch_semaphore_signal(done);
+                }
+            }
+            
+            task.resume()
+            dispatch_semaphore_wait(done, DISPATCH_TIME_FOREVER);
         }
     }
     
